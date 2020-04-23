@@ -55,7 +55,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    return 'Hello, '+firstName +' '+lastName;
+    return 'Hello, '+firstName +' '+lastName+'!';
 }
 
 /**
@@ -69,7 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    return value.replace('Hello, ','');
+    return value.replace('Hello, ','').replace('!','');
 }
 
 
@@ -84,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    throw new Error('Not implemented');
+    return value.charAt(0);
 }
 
 /**
@@ -99,7 +99,9 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    throw new Error('Not implemented');
+    value = value.replace(/(^\s*)|(\s*$)/gi, ""); 
+    value = value.replace(/[ ]{2,}/gi, " ");
+    return value;
 }
 
 /**
@@ -114,7 +116,10 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+    let result='';
+    for(let i=0; i<count; i++)
+        result += value;
+    return result;    
 }
 
 /**
@@ -130,7 +135,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    return str.replace(value, '');
 }
 
 /**
@@ -145,7 +150,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+    return str.replace('<','').replace('>','');
 }
 
 
@@ -160,7 +165,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase();
 }
 
 /**
@@ -238,7 +243,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    return typeof(value) === 'string'; 
 }
 
 
